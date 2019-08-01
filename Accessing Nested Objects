@@ -1,0 +1,60 @@
+Accessing Nested Objects
+
+```
+var data = {
+    "query":{  
+            "pages":{  
+               "19092":{  
+                  "pageid":19092,
+                  "title":"2019 Hackathon",
+               },
+               "19040":{  
+                  "pageid":19040,
+                  "ns":0,
+                  "title":"Newdummypagepagepage",
+               },
+               "19091":{  
+                  "pageid":19091,
+                  "ns":0,
+                  "title":"Chicksilog",
+                  "images":[  
+                     {  
+                        "ns":6,
+                        "title":"File:Logo-FormEventData.png"
+                     },
+                     {  
+                        "ns":6,
+                        "title":"File:Logo-IskoAnnouncement.png"
+                     }
+                  ]
+               },
+              "18979":{  
+                  "pageid":18979,
+                  "ns":0,
+                  "title":"Samplepage",
+                  "images":[  
+                     {  
+                        "ns":6,
+                        "title":"File:Birds-nests-sample.jpg"
+                     },
+
+                  ]
+               }
+         }
+      }
+ }
+let pages = data.query.pages;
+let param = [];
+Object.keys(pages).forEach(prop=>{
+  //console.log(pages[prop].title);
+  if(pages[prop].hasOwnProperty('images')){
+       for (let item in pages[prop].images)  {
+         //console.log(pages[prop].images[item].title);
+         param.push({title: pages[prop].title, imgtitle:pages[prop].images[item].title});
+       }
+  } else {
+    param.push({title:pages[prop].title});
+  }  
+});
+console.log(JSON.stringify(param));
+```
