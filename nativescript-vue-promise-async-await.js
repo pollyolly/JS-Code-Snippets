@@ -6,10 +6,14 @@ let promise = new Promise((resolve, reject)=>{
                 reject(e);
             });
         });
-        promise.then(result=>{
+        promise.then(result=>{ //
             console.log(result);
         });
-        
+         
+        promise.then((result, test)=>{ 
+            console.log(result);
+        });
+
     =========
     
       export default {
