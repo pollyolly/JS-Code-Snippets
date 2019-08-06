@@ -10,7 +10,7 @@ let promise = new Promise((resolve, reject)=>{
             console.log(result);
         });
          
-        promise.then((result, test)=>{ 
+        promise.then((result, error)=>{ 
             console.log(result);
         });
 
