@@ -20,8 +20,8 @@ let promise = new Promise((resolve, reject)=>{
     },
     methods: {
       async fetchData(){
-        await jobSched.scheduleJob(utils.ad.getApplicationContext());
-        await this.getData().then((result)=>{
+        await jobSched.scheduleJob(utils.ad.getApplicationContext()); //will wait to finish before the next function
+        await this.getData().then((result)=>{ //will wait to finish before the next function
           console.log(result);
         });
         this.printConsole();
@@ -30,9 +30,9 @@ let promise = new Promise((resolve, reject)=>{
         return new Promise((resolve, reject)=>{
           http.getJSON("https://en.wikipedia.org/w/api.php?action=query&format=json&list=recentchanges")
             .then((response) => {
-              resolve(response);
+              resolve(response); //resolve if ready
             }, (e) => {
-              reject(e);
+              reject(e); //reject 
             });
           });
       },
